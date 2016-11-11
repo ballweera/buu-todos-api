@@ -10,11 +10,18 @@ app.use(bodyParser.json())
 app.use(cors())
 
 let todos = [
-  { title: 'Learn JavaScript', completed: false },
-  { title: 'Learn AngularJS', completed: true }
+  { title: 'Learn JavaScript', done: false },
+  { title: 'Learn AngularJS', done: true }
 ]
 
 app.get('/list', (req, res) => {
+  res.json(todos)
+})
+
+app.post('/add', (req, res) => {
+  let todo = req.body
+  console.log(todo)
+  todos.push(todo)
   res.json(todos)
 })
 
